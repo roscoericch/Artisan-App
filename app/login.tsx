@@ -1,39 +1,67 @@
-import { StatusBar } from "expo-status-bar";
-import { Platform, StyleSheet } from "react-native";
-
-import EditScreenInfo from "../components/EditScreenInfo";
-import { Text, View } from "../components/Themed";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Keyboard, StyleSheet, Text, View, Pressable } from "react-native";
+import { useRouter } from "expo-router";
+import { TextInput } from "react-native-gesture-handler";
+import { useController } from "react-hook-form";
+import Colors from "../constants/Colors";
 
 export default function Login() {
+  const { replace } = useRouter();
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
-      <EditScreenInfo path="app/modal.tsx" />
-
-      {/* Use a light status bar on iOS to account for the black space above the modal */}
-      <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View>
+        <Text style={styles.label}>Email</Text>
+        <TextInput style={styles.input}></TextInput>
+      </View>
+      <View>
+        <Text style={styles.label}>Password</Text>
+        <TextInput secureTextEntry={true} style={styles.input}></TextInput>
+      </View>
+      <Pressable
+        style={styles.button}
+        onPress={() => {
+          Keyboard.dismiss();
+          replace("(tabs)");
+        }}
+      >
+        <Text style={styles.buttonText}>Login</Text>
+      </Pressable>
+      {/* <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} /> */}
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "#FFFFF",
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    gap: 12,
+    paddingHorizontal: 15,
   },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
+  label: {
+    fontSize: 12,
+    fontWeight: "400",
+    color: "#000",
+    paddingVertical: 2,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
+  input: {
+    borderRadius: 2,
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: "#000",
+    height: 50,
+    paddingHorizontal: 10,
+  },
+  button: {
+    backgroundColor: Colors.headerbg,
+    borderRadius: 5,
+    alignSelf: "flex-end",
+    paddingVertical: 15,
+    paddingHorizontal: 60,
+  },
+  buttonText: {
+    color: "#FFF",
+    fontSize: 16,
+    fontWeight: "700",
   },
 });
