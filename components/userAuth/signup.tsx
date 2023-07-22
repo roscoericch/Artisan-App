@@ -8,7 +8,11 @@ import Colors from "../../constants/Colors";
 export default function SignUp() {
   const { replace } = useRouter();
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
+      <View>
+        <Text style={styles.label}>Fullname</Text>
+        <TextInput style={styles.input}></TextInput>
+      </View>
       <View>
         <Text style={styles.label}>Email</Text>
         <TextInput style={styles.input}></TextInput>
@@ -17,6 +21,14 @@ export default function SignUp() {
         <Text style={styles.label}>Password</Text>
         <TextInput secureTextEntry={true} style={styles.input}></TextInput>
       </View>
+      <View>
+        <Text style={styles.label}>Confirm Password</Text>
+        <TextInput secureTextEntry={true} style={styles.input}></TextInput>
+      </View>
+      <View>
+        <Text style={styles.label}>Location</Text>
+        <TextInput style={styles.input}></TextInput>
+      </View>
       <Pressable
         style={styles.button}
         onPress={() => {
@@ -24,10 +36,10 @@ export default function SignUp() {
           replace("(tabs)");
         }}
       >
-        <Text style={styles.buttonText}>Login</Text>
+        <Text style={styles.buttonText}>Signup</Text>
       </Pressable>
       {/* <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} /> */}
-    </SafeAreaView>
+    </View>
   );
 }
 

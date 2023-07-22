@@ -8,7 +8,7 @@ import Colors from "../../constants/Colors";
 export default function Login() {
   const { replace } = useRouter();
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View>
         <Text style={styles.label}>Email</Text>
         <TextInput style={styles.input}></TextInput>
@@ -27,7 +27,7 @@ export default function Login() {
         <Text style={styles.buttonText}>Login</Text>
       </Pressable>
       {/* <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} /> */}
-    </SafeAreaView>
+    </View>
   );
 }
 

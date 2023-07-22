@@ -20,13 +20,6 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: Colors.tint,
-        // tabBarLabel(props) {
-        //   return (
-        //     <View>
-        //       {props.focused && <View style={styles.indicator}></View>}
-        //     </View>
-        //   );
-        // },
       }}
     >
       <Tabs.Screen
@@ -138,13 +131,13 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="(profile)"
         options={{
           title: "Profile",
           tabBarLabel: (props) => {
             return (
               <Link
-                href={"profile"}
+                href={"(profile)"}
                 style={{
                   display: "flex",
                   flexDirection: "column",
@@ -164,7 +157,7 @@ export default function TabLayout() {
             );
           },
           tabBarIcon: ({ color }) => (
-            <Link href={"profile"}>
+            <Link href={"(profile)"}>
               <FontAwesome5 name="user-circle" color={color} size={26.667} />
             </Link>
           ),
