@@ -18,7 +18,7 @@ export {
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: "login",
+  initialRouteName: "welcome",
 };
 
 export default function RootLayout() {
@@ -51,23 +51,18 @@ function RootLayoutNav() {
           backgroundColor: Colors.headerbg,
         },
       }}
+      initialRouteName="welcome"
     >
       <Stack.Screen
-        name="login"
+        name="welcome"
         options={{
-          headerTitle() {
-            return (
-              <Text style={{ fontSize: 16, fontWeight: "400", color: "#FFF" }}>
-                Sign In
-              </Text>
-            );
-          },
+          headerShown: false,
         }}
       />
       <Stack.Screen
-        name="signup"
+        name="client"
         options={{
-          headerTitle: "User Registration",
+          headerTitle: "Client",
         }}
       />
       <Stack.Screen

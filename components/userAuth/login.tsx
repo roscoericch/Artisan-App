@@ -3,7 +3,7 @@ import { Keyboard, StyleSheet, Text, View, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import { TextInput } from "react-native-gesture-handler";
 import { useController } from "react-hook-form";
-import Colors from "../constants/Colors";
+import Colors from "../../constants/Colors";
 
 export default function Login() {
   const { replace } = useRouter();
