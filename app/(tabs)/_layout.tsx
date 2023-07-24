@@ -18,7 +18,7 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        headerShown: false,
+        headerStyle: { backgroundColor: Colors.headerbg },
         tabBarActiveTintColor: Colors.tint,
       }}
     >
@@ -26,6 +26,7 @@ export default function TabLayout() {
         name="(home)"
         options={{
           title: "Home",
+          headerShown: false,
           tabBarLabel: (props) => {
             return (
               <Link

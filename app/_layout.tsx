@@ -62,75 +62,12 @@ function RootLayoutNav() {
       <Stack.Screen
         name="client"
         options={{
-          headerTitle: "Client",
-          header(props) {
-            return (
-              <View
-                style={{
-                  backgroundColor: Colors.headerbg,
-                  display: "flex",
-                  alignItems: "flex-end",
-                  flexDirection: "column",
-                  paddingTop: "12%",
-                  paddingBottom: 0,
-                  marginBottom: 0,
-                  justifyContent: "space-between",
-                  alignContent: "space-between",
-                  gap: 25,
-                }}
-              >
-                <View
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    width: "98%",
-                    justifyContent: "flex-start",
-                    paddingHorizontal: "2%",
-                    alignItems: "center",
-                    gap: 15,
-                  }}
-                >
-                  <Pressable onPress={() => push("welcome")}>
-                    <Image
-                      style={{ width: 16, height: 16 }}
-                      source={require("../assets/icons/arrowback.svg")}
-                    />
-                  </Pressable>
-                  <Text
-                    style={{ fontSize: 16, fontWeight: "400", color: "#FFF" }}
-                  >
-                    Client
-                  </Text>
-                </View>
-                <Tab
-                  value={index}
-                  style={{
-                    backgroundColor: Colors.headerbg,
-                    padding: 0,
-                    margin: 0,
-                  }}
-                  indicatorStyle={{
-                    backgroundColor: "#FFF",
-                    height: 5,
-                    borderRadius: 2,
-                  }}
-                  onChange={(e) => setIndex(e)}
-                >
-                  <Tab.Item>
-                    <Text style={{ color: "#FFF" }}>Login</Text>
-                  </Tab.Item>
-                  <Tab.Item>
-                    <Text style={{ color: "#FFF" }}>Sign Up</Text>
-                  </Tab.Item>
-                </Tab>
-              </View>
-            );
-          },
+          headerShown: false,
         }}
       />
       <Stack.Screen
         name="(tabs)"
-        options={{ headerTitle: "", headerBackVisible: false }}
+        options={{ headerShown:false }}
       />
     </Stack>
   );
