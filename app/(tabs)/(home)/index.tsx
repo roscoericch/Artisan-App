@@ -16,19 +16,14 @@ export default function Home() {
           <Text style={styles.headerText}>Hello Daniel</Text>
           {Platform.OS === "ios" ? (
             <View style={styles.pickerGroup}>
-              <View>
-                <PickerIOS>
-                  {Artisan.map((e, i) => (
-                    <PickerIOS.Item
-                      key={`${i}artisan`}
-                      value={e.value}
-                      label={e.label}
-                    />
-                  ))}
-                </PickerIOS>
-              </View>
-              <View>
-                <PickerIOS>
+              <Pressable
+                onPress={() => {
+                  if (artisanPicker.current) {
+                    artisanPicker.current.focus();
+                  }
+                }}
+              >
+                <PickerIOS ref={locationPicker} style={styles.picker}>
                   {State.map((e, i) => (
                     <PickerIOS.Item
                       key={`${i}location`}
@@ -37,7 +32,31 @@ export default function Home() {
                     />
                   ))}
                 </PickerIOS>
-              </View>
+              </Pressable>
+              <View
+                style={{
+                  width: 0.5,
+                  height: "100%",
+                  backgroundColor: Colors.headerbg,
+                }}
+              ></View>
+              <Pressable
+                onPress={() => {
+                  if (locationPicker.current) {
+                    locationPicker.current.focus();
+                  }
+                }}
+              >
+                <PickerIOS ref={artisanPicker} style={styles.picker}>
+                  {Artisan.map((e, i) => (
+                    <PickerIOS.Item
+                      key={`${i}artisan`}
+                      value={e.value}
+                      label={e.label}
+                    />
+                  ))}
+                </PickerIOS>
+              </Pressable>
             </View>
           ) : (
             <View style={styles.pickerGroup}>
