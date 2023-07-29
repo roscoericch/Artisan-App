@@ -1,14 +1,25 @@
-import { StyleSheet, Text, View, Platform, Pressable } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Platform,
+  Pressable,
+  ScrollView,
+} from "react-native";
 import { Picker, PickerIOS } from "@react-native-picker/picker";
 import { useState, useRef } from "react";
 import Colors from "../../../constants/Colors";
 import State from "../../../constants/Location";
 import Artisan from "../../../constants/Artisans";
+import { Link } from "expo-router";
 
 export default function Home() {
   const [location, setLocation] = useState("");
   const locationPicker = useRef(null);
   const artisanPicker = useRef(null);
+  const [iosArtisanPicker, setIosArtisanPicker] = useState(false);
+  const [ioslocationPicker, setIoslocationPicker] = useState(false);
+  const arr = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
   return (
     <View style={styles.container}>
       <View style={styles.headerContainetr}>
@@ -18,21 +29,24 @@ export default function Home() {
             <View style={styles.pickerGroup}>
               <Pressable
                 onPress={() => {
-                  if (artisanPicker.current) {
-                    artisanPicker.current.focus();
-                  }
+                  setIoslocationPicker((prev) => !prev);
                 }}
               >
-                <PickerIOS ref={locationPicker} style={styles.picker}>
-                  {State.map((e, i) => (
-                    <PickerIOS.Item
-                      key={`${i}location`}
-                      value={e.value}
-                      label={e.label}
-                    />
-                  ))}
-                </PickerIOS>
+                <Text>Artisan Type</Text>
               </Pressable>
+              <View>
+                {iosArtisanPicker && (
+                  <PickerIOS style={styles.iospicker}>
+                    {State.map((e, i) => (
+                      <PickerIOS.Item
+                        key={`${i}location`}
+                        value={e.value}
+                        label={e.label}
+                      />
+                    ))}
+                  </PickerIOS>
+                )}
+              </View>
               <View
                 style={{
                   width: 0.5,
@@ -42,12 +56,13 @@ export default function Home() {
               ></View>
               <Pressable
                 onPress={() => {
-                  if (locationPicker.current) {
-                    locationPicker.current.focus();
-                  }
+                  setIoslocationPicker((prev) => !prev);
                 }}
               >
-                <PickerIOS ref={artisanPicker} style={styles.picker}>
+                <Text>LocationPicker</Text>
+              </Pressable>
+              {ioslocationPicker && (
+                <PickerIOS ref={artisanPicker} style={styles.iospicker}>
                   {Artisan.map((e, i) => (
                     <PickerIOS.Item
                       key={`${i}artisan`}
@@ -56,7 +71,7 @@ export default function Home() {
                     />
                   ))}
                 </PickerIOS>
-              </Pressable>
+              )}
             </View>
           ) : (
             <View style={styles.pickerGroup}>
@@ -115,6 +130,19 @@ export default function Home() {
           )}
         </View>
       </View>
+      <ScrollView style={styles.listContainer}>
+        {arr.map(() => (
+          <View>
+            <Link href={"/artisanProfile"} style={styles.listItem}>
+              <Text>Go-Neat Salon</Text>
+              <Text>
+                Block 36D, Flex Plaza along Caleb school, Magodo, Lagos
+              </Text>
+            </Link>
+            <View style={styles.separator}></View>
+          </View>
+        ))}
+      </ScrollView>
     </View>
   );
 }
@@ -167,5 +195,39 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderStyle: "solid",
     borderColor: Colors.headerbg,
+  },
+  iospicker: {
+    width: "80%",
+    borderBottomRightRadius: 5,
+    borderBottomEndRadius: 5,
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: Colors.headerbg,
+    position: "absolute",
+    top: "50%",
+    left: "10%",
+    marginHorizontal: "5%",
+    backgroundColor: "#FFF",
+  },
+  listContainer: {
+    width: "99%",
+    marginVertical: "10%",
+  },
+  listItem: {
+    width: "91%",
+    paddingHorizontal: "5%",
+    paddingVertical: "5%",
+    marginHorizontal: "5%",
+    borderColor: Colors.headerbg,
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderTopWidth: 1,
+    borderStyle: "solid",
+  },
+  separator: {
+    backgroundColor: Colors.headerbg,
+    height: 2,
+    width: "91%",
+    marginHorizontal: "5%",
   },
 });

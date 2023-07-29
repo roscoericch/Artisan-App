@@ -49,8 +49,7 @@ const styles = StyleSheet.create({
   },
   button: {
     borderRadius: 5,
-    paddingVertical: 18,
-    paddingHorizontal: 120,
+    width: "95%",
     borderStyle: "solid",
     borderWidth: 1,
     flex: 1,
@@ -58,6 +57,7 @@ const styles = StyleSheet.create({
     maxHeight: 70,
     alignItems: "center",
     justifyContent: "center",
+    marginHorizontal: "2%",
   },
   buttonText: {
     fontSize: 14,
