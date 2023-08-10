@@ -5,6 +5,7 @@ import {
   Platform,
   Pressable,
   ScrollView,
+  Dimensions,
 } from "react-native";
 import { Picker, PickerIOS } from "@react-native-picker/picker";
 import { useState, useRef } from "react";
@@ -20,31 +21,42 @@ export default function Home() {
   const [iosArtisanPicker, setIosArtisanPicker] = useState(false);
   const [ioslocationPicker, setIoslocationPicker] = useState(false);
   const arr = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+  const height = Dimensions.get("screen").height;
+  const width = Dimensions.get("screen").width;
   return (
     <View style={styles.container}>
       <View style={styles.headerContainetr}>
         <View style={styles.header}>
           <Text style={styles.headerText}>Hello Daniel</Text>
           {Platform.OS === "ios" ? (
-            <View style={styles.pickerGroup}>
+            <View style={styles.iospickerGroup}>
               <Pressable
                 onPress={() => {
                   setIoslocationPicker((prev) => !prev);
                 }}
+                style={{ backgroundColor: "#FFF" }}
               >
                 <Text>Artisan Type</Text>
               </Pressable>
               <View>
                 {iosArtisanPicker && (
-                  <PickerIOS style={styles.iospicker}>
-                    {State.map((e, i) => (
-                      <PickerIOS.Item
-                        key={`${i}location`}
-                        value={e.value}
-                        label={e.label}
-                      />
-                    ))}
-                  </PickerIOS>
+                  <View
+                    style={{
+                      flex: 1,
+                      backgroundColor: Colors.headerbg,
+                      position: "absolute",
+                    }}
+                  >
+                    <PickerIOS style={styles.iospicker}>
+                      {State.map((e, i) => (
+                        <PickerIOS.Item
+                          key={`${i}location`}
+                          value={e.value}
+                          label={e.label}
+                        />
+                      ))}
+                    </PickerIOS>
+                  </View>
                 )}
               </View>
               <View
@@ -59,18 +71,32 @@ export default function Home() {
                   setIoslocationPicker((prev) => !prev);
                 }}
               >
-                <Text>LocationPicker</Text>
+                <Text>Location Picker</Text>
               </Pressable>
               {ioslocationPicker && (
-                <PickerIOS ref={artisanPicker} style={styles.iospicker}>
-                  {Artisan.map((e, i) => (
-                    <PickerIOS.Item
-                      key={`${i}artisan`}
-                      value={e.value}
-                      label={e.label}
-                    />
-                  ))}
-                </PickerIOS>
+                <View
+                  style={{
+                    backgroundColor: Colors.headerbg,
+                    position: "absolute",
+                    width: width,
+                    height: height,
+                    display: "flex",
+                    top: 0,
+                    left: "-6.5%",
+                    marginHorizontal: 0,
+                    zIndex: 100000,
+                  }}
+                >
+                  <PickerIOS ref={artisanPicker} style={styles.iospicker}>
+                    {Artisan.map((e, i) => (
+                      <PickerIOS.Item
+                        key={`${i}artisan`}
+                        value={e.value}
+                        label={e.label}
+                      />
+                    ))}
+                  </PickerIOS>
+                </View>
               )}
             </View>
           ) : (
@@ -160,7 +186,8 @@ const styles = StyleSheet.create({
   header: {
     width: "90%",
     flex: 1,
-    marginHorizontal: "5%",
+    // marginHorizontal: "5%",
+    alignSelf: "center",
     display: "flex",
     flexDirection: "column",
     alignContent: "flex-end",
@@ -179,7 +206,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     position: "absolute",
     bottom: "-80%",
-    // marginHorizontal: "2%",
     width: "99%",
     backgroundColor: "#FFF",
     paddingHorizontal: "5%",
@@ -187,6 +213,21 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderStyle: "solid",
     borderColor: Colors.headerbg,
+  },
+  iospickerGroup: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    position: "absolute",
+    bottom: "-80%",
+    width: "99%",
+    backgroundColor: "#FFF",
+    paddingHorizontal: "5%",
+    paddingVertical: "5%",
+    borderRadius: 5,
+    borderWidth: 1,
+    borderStyle: "solid",
   },
   picker: {
     width: 140,
@@ -203,31 +244,32 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderStyle: "solid",
     borderColor: Colors.headerbg,
-    position: "absolute",
-    top: "50%",
-    left: "10%",
-    marginHorizontal: "5%",
+    marginHorizontal: "10%",
+    marginVertical: "50%",
     backgroundColor: "#FFF",
+    zIndex: 10000,
   },
   listContainer: {
-    width: "99%",
+    // width: "99%",
     marginVertical: "10%",
   },
   listItem: {
-    width: "91%",
+    width: "90%",
     paddingHorizontal: "5%",
     paddingVertical: "5%",
-    marginHorizontal: "5%",
+    // marginHorizontal: "5%",
     borderColor: Colors.headerbg,
     borderLeftWidth: 1,
     borderRightWidth: 1,
     borderTopWidth: 1,
     borderStyle: "solid",
+    alignSelf: "center",
   },
   separator: {
     backgroundColor: Colors.headerbg,
     height: 2,
-    width: "91%",
-    marginHorizontal: "5%",
+    width: "90%",
+    // marginHorizontal: "5%",
+    alignSelf: "center",
   },
 });

@@ -63,11 +63,15 @@ export default function Client() {
             backgroundColor: Colors.headerbg,
             padding: 0,
             margin: 0,
+            width: "90%",
+            alignSelf: "center",
           }}
           indicatorStyle={{
             backgroundColor: "#FFF",
             height: 5,
             borderRadius: 2,
+            width: "50%",
+            alignSelf: "center",
           }}
           onChange={(e) => setIndex(e)}
         >

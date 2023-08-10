@@ -9,7 +9,11 @@ export default function RootLayoutNav() {
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen
         name="artisanProfile"
-        options={{ title: "", headerBackVisible: false }}
+        options={{
+          title: "",
+          headerBackVisible: true,
+          headerTintColor: "#FFF",
+        }}
       />
     </Stack>
   );

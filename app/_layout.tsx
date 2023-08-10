@@ -4,11 +4,6 @@ import { SplashScreen, Stack } from "expo-router";
 import { useEffect, useState } from "react";
 import { Pressable, useColorScheme } from "react-native";
 import Colors from "../constants/Colors";
-import { Text, View } from "react-native";
-import { Tab } from "@rneui/base";
-import { Image } from "expo-image";
-import { SafeAreaView } from "react-native";
-import { useRouter } from "expo-router";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -40,9 +35,6 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  const colorScheme = useColorScheme();
-  const [index, setIndex] = useState(0);
-  const { push } = useRouter();
   return (
     <Stack
       screenOptions={{
@@ -65,10 +57,8 @@ function RootLayoutNav() {
           headerShown: false,
         }}
       />
-      <Stack.Screen
-        name="(tabs)"
-        options={{ headerShown:false }}
-      />
+      <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
     </Stack>
   );
 }

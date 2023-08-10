@@ -2,10 +2,12 @@ import { View, Text, StyleSheet, Pressable, ScrollView } from "react-native";
 import { useState } from "react";
 import { Tab, TabView } from "@rneui/base";
 import Colors from "../../../constants/Colors";
-import { Image } from "expo-image";
+import ArtComponent from "../../../components/home/artisanProfile/artComponent";
+import { FlatList } from "react-native-gesture-handler";
 
 export default function artisanProfile() {
   const [index, setIndex] = useState(0);
+  const arr = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
   return (
     <View
       style={{
@@ -34,11 +36,14 @@ export default function artisanProfile() {
             backgroundColor: "#FFF",
             padding: 0,
             margin: 0,
+            width: "90%",
+            alignSelf: "center",
           }}
           indicatorStyle={{
             backgroundColor: Colors.headerbg,
             height: 2,
             borderRadius: 2,
+            width: "50%",
           }}
           titleStyle={{
             width: "50%",
@@ -54,15 +59,47 @@ export default function artisanProfile() {
           </Tab.Item>
         </Tab>
       </View>
+      <View
+        style={{
+          height: 3,
+          width: "100%",
+          backgroundColor: "#D9D9D9",
+          elevation: 30,
+          shadowColor: "#D9D9D9",
+        }}
+      ></View>
       <TabView value={index} onChange={setIndex}>
         <TabView.Item style={{ flex: 1, backgroundColor: "#FFF" }}>
-          <View></View>
+          <View style={styles.detailsView}>
+            <Text style={styles.detailsTitle}>Go-Neat Salon</Text>
+            <Text>Block 36D, Flex Plaza along Caleb school, Magodo, Lagos</Text>
+          </View>
         </TabView.Item>
         <TabView.Item style={{ flex: 1, backgroundColor: "#FFF" }}>
-          <ScrollView></ScrollView>
+          <View
+            style={{
+              flex: 1,
+            }}
+          >
+            <FlatList
+              columnWrapperStyle={{
+                width: "92%",
+                alignSelf: "center",
+                justifyContent: "space-between",
+                gap: 10,
+              }}
+              contentContainerStyle={{
+                gap: 25,
+                paddingVertical: "5%",
+              }}
+              numColumns={2}
+              data={arr}
+              renderItem={() => <ArtComponent />}
+            />
+          </View>
         </TabView.Item>
       </TabView>
-      <View>
+      <View style={{ width: "100%" }}>
         <Pressable style={styles.btn}>
           <Text
             style={{
@@ -84,9 +121,24 @@ const styles = StyleSheet.create({
   btn: {
     backgroundColor: Colors.headerbg,
     width: "90%",
-    marginHorizontal: "4%",
+    alignSelf: "center",
     paddingVertical: "4%",
     borderRadius: 3,
     marginVertical: "5%",
+  },
+  detailsView: {
+    flex: 1,
+    paddingHorizontal: "5%",
+    paddingVertical: "10%",
+  },
+  detailsTitle: {
+    fontSize: 24,
+    fontWeight: "700",
+    color: "#000",
+  },
+  detailsText: {
+    fontSize: 10,
+    fontWeight: "400",
+    color: "#000",
   },
 });

@@ -1,6 +1,6 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Keyboard, StyleSheet, Text, View, Pressable } from "react-native";
-import { useRouter } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { TextInput } from "react-native-gesture-handler";
 import { useController } from "react-hook-form";
 import Colors from "../../constants/Colors";
@@ -21,10 +21,11 @@ export default function Login() {
         style={styles.button}
         onPress={() => {
           Keyboard.dismiss();
-          replace("(tabs)");
         }}
       >
-        <Text style={styles.buttonText}>Login</Text>
+        <Link href={"(tabs)"}>
+          <Text style={styles.buttonText}>Login</Text>
+        </Link>
       </Pressable>
       {/* <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} /> */}
     </View>

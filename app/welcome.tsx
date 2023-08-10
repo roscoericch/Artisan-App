@@ -1,36 +1,31 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Keyboard, StyleSheet, Text, View, Pressable } from "react-native";
-import { useRouter } from "expo-router";
-import { TextInput } from "react-native-gesture-handler";
+import { StyleSheet, Text, Pressable, View } from "react-native";
 import Colors from "../constants/Colors";
+import { Link } from "@react-navigation/native";
 
 export default function Login() {
-  const { push } = useRouter();
   return (
     <SafeAreaView style={styles.container}>
-      <Pressable
-        style={{ ...styles.button, backgroundColor: "#FFF" }}
-        onPress={() => {
-          push("artisan");
-        }}
-      >
-        <Text style={{ ...styles.buttonText, color: Colors.headerbg }}>
-          Access as Artisan
-        </Text>
+      <Pressable style={{ ...styles.button, backgroundColor: "#FFF" }}>
+        <Link style={styles.link} to={"artisan"}>
+          <Text style={{ ...styles.buttonText, color: Colors.headerbg }}>
+            Access as Artisan
+          </Text>
+        </Link>
       </Pressable>
+
       <Pressable
         style={{
           ...styles.button,
           backgroundColor: Colors.headerbg,
           borderColor: "#FFF",
         }}
-        onPress={() => {
-          push("client");
-        }}
       >
-        <Text style={{ ...styles.buttonText, color: "#FFF" }}>
-          Access as Client
-        </Text>
+        <Link style={styles.link} to={"/client"}>
+          <Text style={{ ...styles.buttonText, color: "#FFF" }}>
+            Access as Client
+          </Text>
+        </Link>
       </Pressable>
     </SafeAreaView>
   );
@@ -62,6 +57,15 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 14,
     fontWeight: "700",
+    textAlign: "center",
+  },
+  link: {
+    width: "100%",
+    alignSelf: "center",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    alignContent: "center",
     textAlign: "center",
   },
 });

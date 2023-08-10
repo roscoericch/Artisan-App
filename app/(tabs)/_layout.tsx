@@ -5,7 +5,6 @@ import {
 } from "@expo/vector-icons";
 import { Link, Tabs } from "expo-router";
 import { StyleSheet, Text, View, useColorScheme } from "react-native";
-
 import Colors from "../../constants/Colors";
 
 /**
