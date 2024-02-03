@@ -4,8 +4,11 @@ import {
   // Import the types
   DrawerNavigationOptions,
 } from "@react-navigation/drawer";
+import { EvilIcons } from "@expo/vector-icons";
 
 import { withLayoutContext } from "expo-router";
+import Colors from "../../constants/Colors";
+import { View } from "react-native";
 
 const { Navigator } = createDrawerNavigator();
 
@@ -17,7 +20,24 @@ export const Drawer = withLayoutContext<
 
 const DrawerLayout = () => {
   return (
-    <Drawer initialRouteName="index">
+    <Drawer
+      initialRouteName="index"
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.headerbg,
+          margin: 0,
+          shadowColor: Colors.headerbg,
+          shadowOpacity: 0,
+        },
+      }}
+      drawerContent={(props) => <View></View>}
+    >
+      <Drawer.Screen
+        name="(tabs)"
+        options={{
+          headerTitle: "",
+        }}
+      />
       <Drawer.Screen name="index" />
     </Drawer>
   );

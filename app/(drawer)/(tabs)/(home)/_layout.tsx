@@ -1,5 +1,5 @@
 import { Stack } from "expo-router";
-import Colors from "../../../constants/Colors";
+import Colors from "../../../../constants/Colors";
 
 export default function RootLayoutNav() {
   return (
@@ -18,9 +18,9 @@ export default function RootLayoutNav() {
       <Stack.Screen
         name="location"
         options={{
-          presentation: "formSheet",
-          title: "Select Location",
-          headerTintColor: "#FFF",
+          presentation: "transparentModal",
+          // headerShown: false,
+          // contentStyle: { height: "50%", maxHeight: "50%", flex: 0.5 },
         }}
       />
       <Stack.Screen
@@ -29,6 +29,12 @@ export default function RootLayoutNav() {
           presentation: "modal",
           headerTintColor: "#FFF",
           title: "Select Artisan Type",
+        }}
+      />
+      <Stack.Screen
+        name="createSchedule"
+        options={{
+          presentation: "modal",
         }}
       />
     </Stack>

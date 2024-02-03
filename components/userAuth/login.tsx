@@ -23,7 +23,7 @@ export default function Login() {
           Keyboard.dismiss();
         }}
       >
-        <Link href={"(tabs)"}>
+        <Link href={"/(drawer)"}>
           <Text style={styles.buttonText}>Login</Text>
         </Link>
       </Pressable>

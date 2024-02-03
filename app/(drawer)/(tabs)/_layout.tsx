@@ -5,7 +5,7 @@ import {
 } from "@expo/vector-icons";
 import { Link, Tabs } from "expo-router";
 import { StyleSheet, Text, View, useColorScheme } from "react-native";
-import Colors from "../../constants/Colors";
+import Colors from "../../../constants/Colors";
 
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -63,6 +63,7 @@ export default function TabLayout() {
         name="favourite"
         options={{
           title: "Favourite",
+          headerTitle: "",
           tabBarLabel: (props) => {
             return (
               <Link
@@ -96,6 +97,7 @@ export default function TabLayout() {
         name="schedule"
         options={{
           title: "Schedule",
+          headerTitle: "",
           tabBarLabel: (props) => {
             return (
               <Link
@@ -133,6 +135,7 @@ export default function TabLayout() {
         name="(profile)"
         options={{
           title: "Profile",
+          headerTitle: "",
           tabBarLabel: (props) => {
             return (
               <Link

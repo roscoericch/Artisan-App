@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
-import Colors from "../../constants/Colors";
+import Colors from "../../../constants/Colors";
 import { ScrollView } from "react-native-gesture-handler";
 
-export default function Favourite() {
+export default function Schedule() {
   const arr = [1, 1, 1, 1, 1, 1, 1, 1];
   return (
     <View style={styles.container}>

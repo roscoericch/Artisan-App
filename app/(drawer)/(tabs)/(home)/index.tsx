@@ -6,12 +6,13 @@ import {
   Pressable,
   ScrollView,
   Dimensions,
+  Modal,
 } from "react-native";
 import { Picker, PickerIOS } from "@react-native-picker/picker";
 import { useState, useRef } from "react";
-import Colors from "../../../constants/Colors";
-import State from "../../../constants/Location";
-import Artisan from "../../../constants/Artisans";
+import Colors from "../../../../constants/Colors";
+import State from "../../../../constants/Location";
+import Artisan from "../../../../constants/Artisans";
 import { Link } from "expo-router";
 
 export default function Home() {
@@ -125,8 +126,8 @@ const styles = StyleSheet.create({
   },
   headerContainetr: {
     backgroundColor: Colors.headerbg,
-    height: "20%",
-    paddingVertical: "10%",
+    height: "12%",
+    paddingVertical: "5%",
   },
   header: {
     width: "90%",
@@ -142,7 +143,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "700",
     color: "#FFF",
-    paddingBottom: "3%",
+    paddingBottom: "5%",
   },
   pickerGroup: {
     display: "flex",
@@ -150,7 +151,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     position: "absolute",
-    bottom: "-80%",
+    bottom: "-100%",
     width: "99%",
     backgroundColor: "#FFF",
     paddingHorizontal: "5%",
@@ -165,7 +166,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     alignItems: "center",
     position: "absolute",
-    bottom: "-80%",
+    bottom: "-100%",
     width: "99%",
     backgroundColor: "#FFF",
     paddingHorizontal: "5%",
